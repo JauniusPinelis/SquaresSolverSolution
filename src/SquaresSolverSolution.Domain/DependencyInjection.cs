@@ -13,6 +13,7 @@ namespace SquaresSolverSolution.Domain
         public static void RegisterDomainServices(this IServiceCollection services)
         {
             services.AddScoped<PointsService>();
+            
         }
     }
 }

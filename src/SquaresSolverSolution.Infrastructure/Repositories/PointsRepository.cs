@@ -18,6 +18,12 @@ namespace SquaresSolverSolution.Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        public async Task AddPoint(CustomPoint point)
+        {
+            _context.Add(point);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<CustomPoint>> GetAll()
         {
             var points = await _context.Points.ToListAsync();
