@@ -25,7 +25,7 @@ namespace SquaresSolverSolution.Domain.Services
             return await _repository.GetAll();
         }
 
-        public async Task AddPoint(CustomPoint point)
+        public async Task AddPointAsync(CustomPoint point)
         {
             // first validate the point
             var validator = new CoordinateValidator();

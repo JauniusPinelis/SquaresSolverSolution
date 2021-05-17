@@ -27,8 +27,14 @@ namespace SquaresSolverSolution.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
             services.ConfigureApplication(Configuration);
+            services.AddCors(o => o.AddPolicy("Default", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -41,6 +47,7 @@ namespace SquaresSolverSolution.WebApi
         {
             if (env.IsDevelopment())
             {
+                app.UseCors("Default");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SquaresSolverSolution.WebApi v1"));

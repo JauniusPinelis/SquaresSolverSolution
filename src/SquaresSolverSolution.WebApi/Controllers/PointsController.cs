@@ -40,7 +40,7 @@ namespace SquaresSolverSolution.WebApi.Controllers
         {
             try
             {
-                await _service.AddPoint(point);
+                await _service.AddPointAsync(point);
             }
             catch (DbUpdateException)
             {
